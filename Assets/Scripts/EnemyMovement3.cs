@@ -2,17 +2,16 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class EnemyMovement2 : MonoBehaviour
+public class EnemyMovement3 : MonoBehaviour
 {
-    bool enemy1_passed = false;
-    public static Vector3 e2pos;
+    bool enemy2_passed = false;
     private float enemy_speed = EnemyMovement.enemy_speed;
     Rigidbody2D rb;
-    Vector3 enemy1pos;
+    Vector3 enemy2pos;
     // Start is called before the first frame update
     void Start()
     {
-        e2pos = transform.position;
+        enemy2pos = EnemyMovement2.e2pos;
         rb = GetComponent<Rigidbody2D>();
         transform.position = new Vector3(11.34f, -3.118f, 0f);
     }
@@ -20,14 +19,18 @@ public class EnemyMovement2 : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        enemy1pos = EnemyMovement.e1pos;
-        e2pos = transform.position;
-        if (enemy1pos.x <= 4.2f)
-            enemy1_passed = true;
-        if (enemy1_passed)
+        
+        enemy2pos = EnemyMovement2.e2pos;
+        if (enemy2pos.x <= 4.2f)
+        {
+            enemy2_passed = true;
+        }
+        if (enemy2_passed)
+        {
             transform.Translate(Time.deltaTime * enemy_speed, 0, 0);
+        }
+            
     }
-
     private void OnTriggerEnter2D(Collider2D collision)
     {
         if (collision.CompareTag("Finish"))

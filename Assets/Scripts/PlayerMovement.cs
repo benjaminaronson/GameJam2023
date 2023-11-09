@@ -9,7 +9,7 @@ public class PlayerMovement : MonoBehaviour
     Rigidbody2D rb;
     public float jump_velocity = 17;
     bool grounded = true;
-    readonly float speed = 10.0f;
+    float speed = 10.0f;
     // Start is called before the first frame update
     void Start()
     {
@@ -38,7 +38,8 @@ public class PlayerMovement : MonoBehaviour
     }
     private void OnCollisionEnter2D(Collision2D collision)
     {
-        grounded = true;
+        if (collision.gameObject.CompareTag("Ground")) grounded = true;
+        
     }
     private void OnTriggerEnter2D(Collider2D collision)
     {
