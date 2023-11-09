@@ -5,10 +5,11 @@ using UnityEngine;
 public class EnemyMovement3 : MonoBehaviour
 {
     bool enemy2_passed = false;
-    private float enemy_speed = EnemyMovement.enemy_speed;
+    public static float enemy_speed = EnemyMovement.enemy_speed;
     Rigidbody2D rb;
     Vector3 enemy2pos;
     public static Vector3 enemy3pos;
+   
     // Start is called before the first frame update
     void Start()
     {
@@ -26,7 +27,10 @@ public class EnemyMovement3 : MonoBehaviour
         if (enemy2pos.x <= 4.2f)
         {
             enemy2_passed = true;
+           
         }
+        
+        
         if (enemy2_passed)
         {
             transform.Translate(Time.deltaTime * enemy_speed, 0, 0);
@@ -39,6 +43,7 @@ public class EnemyMovement3 : MonoBehaviour
         {
             transform.position = new Vector3(11.34f, -3.118f, 0f);
             enemy2_passed = false;
+          
         }
     }
 }

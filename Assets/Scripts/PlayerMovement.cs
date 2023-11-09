@@ -10,6 +10,7 @@ public class PlayerMovement : MonoBehaviour
     public float jump_velocity = 17;
     bool grounded = true;
     float speed = 10.0f;
+    public static int score = 0;
     // Start is called before the first frame update
     void Start()
     {
@@ -45,7 +46,23 @@ public class PlayerMovement : MonoBehaviour
     {
         if (collision.CompareTag("Enemy"))
         {
+            YouLose.DisplayYouLose();
             Time.timeScale = 0;
+
+            
+        }
+        else if (collision.CompareTag("Jumped"))
+        {
+            score++;
+            DigitIncrementer.increment_digits();
+            Digit2Incrementer.increment_digits();
+            if (score % 10 == 0)
+            {
+                EnemyMovement.enemy_speed--;
+                EnemyMovement2.enemy_speed--;
+                EnemyMovement3.enemy_speed--;
+                
+            }
             
         }
     }
