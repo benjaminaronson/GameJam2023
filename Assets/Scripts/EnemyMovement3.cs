@@ -8,6 +8,7 @@ public class EnemyMovement3 : MonoBehaviour
     private float enemy_speed = EnemyMovement.enemy_speed;
     Rigidbody2D rb;
     Vector3 enemy2pos;
+    public static Vector3 enemy3pos;
     // Start is called before the first frame update
     void Start()
     {
@@ -19,6 +20,7 @@ public class EnemyMovement3 : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        enemy3pos = transform.position;
         
         enemy2pos = EnemyMovement2.e2pos;
         if (enemy2pos.x <= 4.2f)
@@ -36,6 +38,7 @@ public class EnemyMovement3 : MonoBehaviour
         if (collision.CompareTag("Finish"))
         {
             transform.position = new Vector3(11.34f, -3.118f, 0f);
+            enemy2_passed = false;
         }
     }
 }

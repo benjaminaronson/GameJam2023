@@ -33,6 +33,7 @@ public class EnemyMovement2 : MonoBehaviour
         if (collision.CompareTag("Finish"))
         {
             transform.position = new Vector3(11.34f, -3.118f, 0f);
+            enemy1_passed = false;
         }
     }
 }
